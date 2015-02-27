@@ -25,6 +25,7 @@ You have to download your kernel sources and headers. Netmap needs sources in or
 In this documents, kernel sources and headers folders will be respectively nammed <ksrcs> and <khdrs>.
 
 .. code-block:: console
+
 	$ git clone https://code.google.com/p/netmap/ netmap 
 	$ cd netmap/LINUX
 	$ make KSRC=<khdrs> SRC=<ksrcs>
@@ -36,6 +37,7 @@ Test NIC to NIC:
 The following example consists in filtering between two interfaces eth0(e1000) and eth1(e1000e). 
 
 .. code-block:: console
+
 	# load kernel modules
 	$ sudo modprobe -r e1000 e1000e
 	$ sudo insmod netmap/LINUX/netmap_lin.ko
@@ -61,6 +63,7 @@ Test NIC to stack:
 The following example consists in filtering between an interface and the host stack
 
 .. code-block:: console
+
 	# load kernel modules
 	$ sudo modprobe -r e1000 e1000e
 	$ sudo insmod netmap/LINUX/netmap_lin.ko
@@ -80,15 +83,15 @@ The following example consists in filtering between an interface and the host st
 
 
 Parameters
-----------
+""""""""""
 
 .. describe:: links
 
     semicolon-separated list of link between netmap ring pairs.
-
+    You can define at most 32 links
     Example of possible values:
 
-    .. code-block:: ini
+.. code-block:: ini
 
         # Interfaces to plug eth0 NIC to eth0 host stack
         links = "netmap:eth0=netmap:eth0^"
